@@ -1,0 +1,71 @@
+<html>
+<head>
+    <title>SignUp Form</title>
+    <script src="./assets/vue.js"></script>
+    <link href="./assets/bootstrap.css" rel="stylesheet"></link>
+    <link href="./assets/app.css" rel="stylesheet"></link>
+</head>
+
+<body>
+
+<div class="container" id="v-app">
+    <h1>Sign up</h1>
+
+    <form @submit="submit"> 
+
+        <div class="form-group">
+            <label>Name</label>
+            <input class="form-input" v-model="name"/>
+        </div>
+
+        <div class="form-group">
+        <label>Email</label>
+        <input class="form-input"
+               v-model="email"
+        />
+        {{ emailValid ? 'Valid!' : 'False!' }}
+        </div>
+
+        <button @click.prevent="submit">Submit</button>
+
+    </form>
+
+    <hr>
+
+    Name: {{ name }}
+
+    <hr>
+
+    {{ submissions }}
+
+</div>
+
+<script>
+new Vue({
+    el: '#v-app',
+    data: {
+        name: '',
+        email: '',
+        submissions: []
+    },
+    computed: {
+        emailValid() {
+            return this.email.indexOf('@') !== -1
+        }
+    },
+    methods: {
+        submit() {
+            if (!this.emailValid) {
+                return alert('Please check mail')
+            }
+            // return alert('Welcome, ' + this.name)
+            this.submissions.push(this.name)
+            this.name = ''
+            this.email = ''
+        }
+    }
+})
+</script>
+
+</body>
+</html>

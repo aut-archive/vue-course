@@ -9,13 +9,34 @@
 <body>
 
 <div class="container" id="v-app">
-    
+    <div>Elapsed time: {{ counter }}</div>
+    <div>Remaining time:{{ 60 - counter }}</div>
+    <br>
+    <button 
+        class="btn btn-danger"
+        @click="reset"
+    >Reset</button>
+
+    <hr>
+
 </div>
 
 <script>
 new Vue({
     el: '#v-app',
     data: {
+        name: 'Sara',
+        counter: 0
+    },
+    mounted() {
+        setInterval(() => {
+            this.counter++
+        }, 1000)
+    },
+    methods: {
+        reset() {
+            this.counter = 0
+        }
     }
 })
 </script>
