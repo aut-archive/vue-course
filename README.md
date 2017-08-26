@@ -1,2 +1,2 @@
-# vue-course
-Vue Course
+# Vue Course
+
