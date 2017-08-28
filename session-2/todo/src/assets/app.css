@@ -24,7 +24,7 @@ body {
 	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	line-height: 1.4em;
 	background: #f5f5f5;
-	color: #4d4d4d;
+	color: #F10F0F;
 	min-width: 230px;
 	max-width: 550px;
 	margin: 0 auto;
@@ -45,8 +45,8 @@ body {
 	background: #fff;
 	margin: 130px 0 40px 0;
 	position: relative;
-	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
-	            0 25px 50px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.51),
+	            0 25px 50px 0 rgba(0, 0, 0, 0.39);
 }
 
 .todoapp input::-webkit-input-placeholder {

@@ -1,24 +1,19 @@
 <template>
   <section class="todoapp">
     <header class="header">
-      <h1>todos</h1> <input autofocus="autofocus" autocomplete="off" placeholder="What needs to be done?" class="new-todo"></header>
-    <section class="main" style=""><input type="checkbox" class="toggle-all">
+      <h1>todos</h1> 
+      <input @keyup.enter="addTodo" v-model="inputBox"  autofocus="autofocus" autocomplete="off" placeholder="What needs to be done?" class="new-todo">
+      </header>
+    <section class="main" style="">
+      <input type="checkbox" class="toggle-all">
       <ul class="todo-list">
-        <li class="todo">
-          <div class="view"><input type="checkbox" class="toggle">
-            <label>A</label>
-            <button class="destroy"></button>
-          </div> <input type="text" class="edit"></li>
-        <li class="todo">
-          <div class="view"><input type="checkbox" class="toggle">
-            <label>B</label>
-            <button class="destroy"></button>
-          </div> <input type="text" class="edit"></li>
-        <li class="todo">
-          <div class="view"><input type="checkbox" class="toggle">
-            <label>C</label>
-            <button class="destroy"></button>
-          </div> <input type="text" class="edit"></li>
+        <li class="todo" v-for="(todo,index) in $store.state.todos" :key="index" >
+          <div class="view">
+            <input type="checkbox" class="toggle" v-model="todo.active">
+            <label> {{ todo.label + ' ' +   todo.active }}</label>
+            <button class="destroy" @click="delete_todo(todo)"></button>
+          </div> <input type="text" class="edit">
+        </li>
       </ul>
     </section>
     <footer class="footer" style="">
@@ -46,9 +41,24 @@
 <script>
 export default {
   name: 'app',
-  data () {
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App...'
+      msg: 'Welcome to Your Vue.js App...',
+      inputBox: ''
+    }
+  },
+  methods: {
+    addTodo() {
+      var newTodo = {
+        label: this.inputBox
+      };
+      if(this.inputBox.length) {
+        this.$store.commit('ADD_TODO', newTodo);
+      }
+      this.inputBox = '';
+    },
+    delete_todo(todo) {
+      this.$store.commit('DELETE_TODO', todo);
     }
   }
 }
