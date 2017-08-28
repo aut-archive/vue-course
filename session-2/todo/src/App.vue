@@ -1,9 +1,46 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ $store.state }}</h1>
-    <h2>Essential Links...</h2>
-  </div>
+  <section class="todoapp">
+    <header class="header">
+      <h1>todos</h1> <input autofocus="autofocus" autocomplete="off" placeholder="What needs to be done?" class="new-todo"></header>
+    <section class="main" style=""><input type="checkbox" class="toggle-all">
+      <ul class="todo-list">
+        <li class="todo">
+          <div class="view"><input type="checkbox" class="toggle">
+            <label>A</label>
+            <button class="destroy"></button>
+          </div> <input type="text" class="edit"></li>
+        <li class="todo">
+          <div class="view"><input type="checkbox" class="toggle">
+            <label>B</label>
+            <button class="destroy"></button>
+          </div> <input type="text" class="edit"></li>
+        <li class="todo">
+          <div class="view"><input type="checkbox" class="toggle">
+            <label>C</label>
+            <button class="destroy"></button>
+          </div> <input type="text" class="edit"></li>
+      </ul>
+    </section>
+    <footer class="footer" style="">
+      <span class="todo-count">
+        <strong>3</strong> items left
+      </span>
+      <ul class="filters">
+        <li>
+          <a href="#/all" class="selected">All</a>
+        </li>
+        <li>
+          <a href="#/active" class="">Active</a>
+        </li>
+        <li>
+          <a href="#/completed" class="">Completed</a>
+        </li>
+      </ul>
+      <button class="clear-completed" style="display: none;">
+        Clear completed
+      </button>
+    </footer>
+  </section>
 </template>
 
 <script>
@@ -17,31 +54,4 @@ export default {
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>
+<style src="./assets/app.css"></style>
