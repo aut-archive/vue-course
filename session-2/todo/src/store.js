@@ -17,11 +17,19 @@ const store = new Vuex.Store({
         },{
             label: "third",
             active: false
-        }]
+        }],
+        filter: 'All'
     },
     getters: {
         todos(state) {
-            return state.todos;
+            return state.todos.filter((todo) => {
+                if(state.filter === 'All')
+                    return true
+                else if(state.filter === 'Active')
+                    return todo.active
+                else if(state.filter === 'Compeleted')
+                    return !todo.active
+            });
         }
     },
     mutations: {
@@ -32,6 +40,9 @@ const store = new Vuex.Store({
         DELETE_TODO(state, todo) {
             var index = state.todos.indexOf(todo); //find it in the array
             state.todos.splice(index, 1); // remove the item
+        },
+        SET_FILTER(state, filter) {
+            state.filter = filter;
         }
     },
     actions: {
